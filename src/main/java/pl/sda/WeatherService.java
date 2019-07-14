@@ -1,10 +1,13 @@
 package pl.sda;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import pl.sda.model.Current;
 import pl.sda.model.Location;
+import pl.sda.model.Weather;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -57,6 +60,9 @@ public class WeatherService {
 
         return location;
     }
+
+
+
 
     public Current getCityWeather() {
 

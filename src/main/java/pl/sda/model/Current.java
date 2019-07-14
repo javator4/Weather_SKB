@@ -1,15 +1,20 @@
 package pl.sda.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Current {
 
+    private Condition condition;
     private String last_updated_epoch;
     private String last_updated;
     private float temp_c;
@@ -32,5 +37,8 @@ public class Current {
     private int uv;
     private float gust_mph;
     private float gust_kph;
+
+
+
 
 }
