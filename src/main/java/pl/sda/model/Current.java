@@ -1,14 +1,12 @@
 package pl.sda.model;
 
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
 
 public class Current {
 
