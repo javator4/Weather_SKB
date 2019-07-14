@@ -1,24 +1,22 @@
 package pl.sda;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import pl.sda.model.Current;
 import pl.sda.model.Location;
 import pl.sda.model.Weather;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.Locale;
+
 
 public class WeatherService {
 
     private String finalURL;
     private String url;
     private String apiKey;
-    private String data="";
+    private String data = "";
 
 
     public WeatherService(String url, String apiKey) {
@@ -28,7 +26,7 @@ public class WeatherService {
         this.finalURL = this.url + "?key=" + apiKey + "&q=";
     }
 
-    public WeatherService getJData(String city) {
+    public String  getJData(String city) {
         if (data.isEmpty()) {
             this.finalURL = this.finalURL + city;
             try {
@@ -39,29 +37,61 @@ public class WeatherService {
             }
         }
 
-        return this;
+        return data;  //was this
 
     }
+
+    public Weather getWeather() {
+
+
+        JSONObject jsonObject = new JSONObject(this.data);
+
+        String lat = jsonObject.getJSONObject("location")
+                .get("lat").toString();
+        String lon = jsonObject.getJSONObject("location")
+                .get("lon").toString();
+        String temp = jsonObject.getJSONObject("current")
+                .get("temp_c").toString();
+        String feelslike_c = jsonObject.getJSONObject("current")
+                .get("feelslike_c").toString();
+
+        Weather weather = new Weather();
+
+        Location location = Location.builder()
+                .lat(Float.parseFloat(lat))
+                .lon(Float.parseFloat(lon))
+                .build();
+
+
+        Current current = Current.builder()
+                .temp_c(Float.parseFloat(temp))
+                .feelslike_c(Float.parseFloat(feelslike_c))
+                .build();
+
+        weather.setCurrent(current);
+        weather.setLocation(location);
+
+        return weather;
+    }
+
 
     public Location getLocation() {
 
 
-       JSONObject jsonObject = new JSONObject(this.data);
+        JSONObject jsonObject = new JSONObject(this.data);
 
-       String lat = jsonObject.getJSONObject("location")
-               .get("lat").toString();
-      String lon = jsonObject.getJSONObject("location")
-              .get("lon").toString();
+        String lat = jsonObject.getJSONObject("location")
+                .get("lat").toString();
+        String lon = jsonObject.getJSONObject("location")
+                .get("lon").toString();
 
-       Location location = Location.builder()
-               .lat(Float.parseFloat(lat))
-               .lon(Float.parseFloat(lon))
-               .build();
+        Location location = Location.builder()
+                .lat(Float.parseFloat(lat))
+                .lon(Float.parseFloat(lon))
+                .build();
 
         return location;
     }
-
-
 
 
     public Current getCityWeather() {

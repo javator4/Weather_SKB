@@ -18,37 +18,36 @@ public class App {
      /*  //String city = "Paris";
 
 
+  //  Current current = weatherService.getCityWeather("Torun");
 
-    //  Current current = weatherService.getCityWeather("Torun");
        // System.out.println("Temperature in " + city + ": " + current.getTemp_c() + "C");
         //System.out.println("Feels like, feels like it's  " + current.getFeelslike_c() + "C" + " in " + city);
-        //System.out.println("Pressure in  " + city + ": " + current.getPressure_mb());
-
-
-     Location location=weatherService.getJData("Torun").getLocation();
-
-
-        System.out.println("Lat: "+location.getLat());
-        System.out.println("Lon: "+location.getLon()); */
-
+        //System.out.println("Pressure in  " + city + ": " + current.getPressure_mb());*/
         WeatherService weatherService = new WeatherService("http://api.apixu.com/v1/current.json",
                 "2ba889217eed469cb8a81157191307");
-        Current current = weatherService.getJData("Torun").getCityWeather();
         String url = "http://api.apixu.com/v1/current.json?key=2ba889217eed469cb8a81157191307&q=Paris";
 
-        System.out.println(current);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            Weather weather = objectMapper.readValue(new URL(url), Weather.class);
+      //  Current current = weatherService.getJData("Torun").getCityWeather();
 
-            objectMapper.writeValue(new File("data.json"), weather);
+    // Location location=weatherService.getJData("Torun").getLocation();
 
-            System.out.println(weather.getLocation().getCountry());
-            System.out.println(weather.getLocation().getLocaltime());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       // System.out.println(current);
+
+      //  System.out.println("Lat: "+location.getLat());
+        //System.out.println("Lon: "+location.getLon());
+
+        WeatherForecast weatherForecast=new OrgImplementation(weatherService,"Torun");
+        WeatherForecast weatherForecast1=new FasterImplementation(weatherService,"Torun");
+
+        System.out.println(weatherForecast.getWeather());
+        System.out.println(weatherForecast1.getWeather());
+
+
+
+
+
+
 
     }
 }
