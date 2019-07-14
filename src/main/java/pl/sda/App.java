@@ -15,8 +15,8 @@ public class App {
 
 
         Current current = weatherService.getCityWeather("Torun");
-        System.out.println("Temp w miescie " + city + ": " + current.getTemp_c() + "C");
-        System.out.println("pressure: " + current.getPressure_mb() + "in"+city);
+        System.out.println("Temperature in " + city + ": " + current.getTemp_c() + "C");
+        System.out.println("Pressure in  " + city + ": " +current.getPressure_mb());
 
     }
 }

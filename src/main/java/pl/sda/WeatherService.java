@@ -49,14 +49,6 @@ public class WeatherService {
                     .get("humidity").toString();
 
 
-            System.out.println(temp);
-            System.out.println(temp_f);
-            System.out.println(wind_kph);
-            System.out.println(wind_mph);
-            System.out.println(pressure_in);
-            System.out.println(pressure_mb);
-            System.out.println(humidity);
-
             Current current = new Current();
             current.setTemp_c(Float.parseFloat(temp));
             current.setTemp_f(Float.parseFloat(temp_f));
