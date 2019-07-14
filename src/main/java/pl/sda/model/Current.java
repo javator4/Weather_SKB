@@ -21,7 +21,7 @@ public class Current {
     private float wind_kph;
     private int wind_degree;
     private String wind_dir;
-    private int pressure_mb;
+    private float pressure_mb;
     private float pressure_in;
     private int precip_mm;
     private int precip_in;
