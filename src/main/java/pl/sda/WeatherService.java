@@ -37,7 +37,7 @@ public class WeatherService {
             }
         }
 
-        return data;  //was this
+        return data;
 
     }
 

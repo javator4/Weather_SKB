@@ -29,11 +29,30 @@ public class App {
                 "2ba889217eed469cb8a81157191307");
 
 
-        WeatherForecast weatherForecast = new OrgImplementation(weatherService, "Torun");
+        WeatherForecast weatherForecast =
+                new OrgImplementation(weatherService, "Torun");
         WeatherForecast weatherForecast1 = new FasterImplementation(weatherService, "Torun");
 
-        System.out.println(weatherForecast.getWeather());
-        System.out.println(weatherForecast1.getWeather());
+       // System.out.println(weatherForecast.getWeather());
+       // System.out.println(weatherForecast1.getWeather());
+
+
+      AbstractJsonData jSonDataFaster=new JSonDataFaster();
+
+        jSonDataFaster.setUrl("http://api.apixu.com/v1/current.json");
+        jSonDataFaster.setApiKey("2ba889217eed469cb8a81157191307");
+        jSonDataFaster.build();
+        jSonDataFaster.setCity("Warszawa");
+        System.out.println(jSonDataFaster.getWeather());
+
+
+        JSonDataOrg jSonDataOrg=new JSonDataOrg();
+        jSonDataOrg.setApiKey("2ba889217eed469cb8a81157191307");
+        jSonDataOrg.setUrl("http://api.apixu.com/v1/current.json");
+        jSonDataOrg.setCity("Torun");
+        jSonDataOrg.build();
+        System.out.println(jSonDataOrg.getWeather());
+
 
 
     }
