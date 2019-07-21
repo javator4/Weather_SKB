@@ -28,15 +28,6 @@ public class App {
         WeatherService weatherService = new WeatherService("http://api.apixu.com/v1/current.json",
                 "2ba889217eed469cb8a81157191307");
 
-
-        WeatherForecast weatherForecast =
-                new OrgImplementation(weatherService, "Torun");
-        WeatherForecast weatherForecast1 = new FasterImplementation(weatherService, "Torun");
-
-       // System.out.println(weatherForecast.getWeather());
-       // System.out.println(weatherForecast1.getWeather());
-
-
       AbstractJsonData jSonDataFaster=new JSonDataFaster();
 
         jSonDataFaster.setUrl("http://api.apixu.com/v1/current.json");

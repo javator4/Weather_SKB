@@ -10,7 +10,7 @@ import pl.sda.model.Weather;
 
 public class JSonDataOrg extends AbstractJsonData {
 
-    private WeatherService weatherService;
+
     private String city;
 
     @Override
